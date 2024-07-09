@@ -5,7 +5,7 @@ import com.thevmin.movie_store_with_security.movies.dto.MovieResponseDTO;
 import com.thevmin.movie_store_with_security.reviews.ReviewMapper;
 
 public class MovieMapper {
-    public static MovieCardResponseDTO mapMovieToMovieCardResponseDTO(Movie movie){
+    public static MovieCardResponseDTO mapMovieToMovieCardResponseDTO(Movie movie) {
         return MovieCardResponseDTO.builder()
                 .id(movie.getId())
                 .name(movie.getName())
@@ -15,7 +15,7 @@ public class MovieMapper {
                 .build();
     }
 
-    public static MovieResponseDTO mapMovieToMovieResponseDTO(Movie movie){
+    public static MovieResponseDTO mapMovieToMovieResponseDTO(Movie movie) {
         return MovieResponseDTO.builder()
                 .id(movie.getId())
                 .coverImageLink(movie.getCoverImageLink())

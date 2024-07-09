@@ -5,13 +5,12 @@ import com.thevmin.movie_store_with_security.reviews.dto.CreateReviewRequestDTO;
 import com.thevmin.movie_store_with_security.reviews.dto.ReviewDTO;
 import com.thevmin.movie_store_with_security.user.User;
 import com.thevmin.movie_store_with_security.user.UserMapper;
-import com.thevmin.movie_store_with_security.user.dto.UserProfileDTO;
 
 import java.util.List;
 
 public class ReviewMapper {
 
-    public static Review MapCreateReviewRequestDtoToReview(CreateReviewRequestDTO createReviewRequestDTO, User user, Movie movie){
+    public static Review MapCreateReviewRequestDtoToReview(CreateReviewRequestDTO createReviewRequestDTO, User user, Movie movie) {
         return Review.builder()
                 .review(createReviewRequestDTO.getReview())
                 .reviewedMovie(movie)
@@ -19,12 +18,12 @@ public class ReviewMapper {
                 .build();
     }
 
-    public static List<ReviewDTO> MapListOfReviewToListOfReviewDTO(List<Review> reviews){
+    public static List<ReviewDTO> MapListOfReviewToListOfReviewDTO(List<Review> reviews) {
         return reviews.stream().map(ReviewMapper::MapReviewToReviewDTO).toList();
 
     }
 
-    public static ReviewDTO MapReviewToReviewDTO(Review review){
+    public static ReviewDTO MapReviewToReviewDTO(Review review) {
         return ReviewDTO.builder()
                 .id(review.getId())
                 .review(review.getReview())

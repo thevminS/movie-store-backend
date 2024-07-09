@@ -30,7 +30,7 @@ public class MovieService {
 
     public ResponseEntity<MovieResponseDTO> getMovieById(Long id) {
         Optional<Movie> movie = movieRepository.findById(id);
-        if (movie.isPresent()){
+        if (movie.isPresent()) {
             return new ResponseEntity<>(MovieMapper.mapMovieToMovieResponseDTO(movie.get()), HttpStatus.FOUND);
         }
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);

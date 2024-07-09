@@ -13,10 +13,10 @@ public class RevokedTokenService {
 
     private final JwtService jwtService;
 
-    public void saveRevokedToken(String token){
+    public void saveRevokedToken(String token) {
         Date expirationDate = jwtService.tokenExpiration(token);
-        if (expirationDate != null){
-            revokedTokenRepository.save(new RevokedToken(token,expirationDate));
+        if (expirationDate != null) {
+            revokedTokenRepository.save(new RevokedToken(token, expirationDate));
         }
     }
 }

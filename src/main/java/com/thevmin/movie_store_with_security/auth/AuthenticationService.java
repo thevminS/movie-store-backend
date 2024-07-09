@@ -43,7 +43,7 @@ public class AuthenticationService {
         var refreshToken = refreshTokenService.createRefreshToken(user);
         Date date = jwtService.tokenExpiration(jwtToken);
         return AuthenticationResponseDTO.builder()
-                .token(new TokenDTO(jwtToken,refreshToken.getToken(), date))
+                .token(new TokenDTO(jwtToken, refreshToken.getToken(), date))
                 .user(new UserAuthenticationResponseDTO(user.getId(), user.getName(), user.getEmail()))
                 .build();
     }
@@ -60,12 +60,12 @@ public class AuthenticationService {
         var refreshToken = refreshTokenService.createRefreshToken(user);
         Date date = jwtService.tokenExpiration(jwtToken);
         return AuthenticationResponseDTO.builder()
-                .token(new TokenDTO(jwtToken,refreshToken.getToken(), date))
+                .token(new TokenDTO(jwtToken, refreshToken.getToken(), date))
                 .user(new UserAuthenticationResponseDTO(user.getId(), user.getName(), user.getEmail()))
                 .build();
     }
 
-    public AuthenticationResponseDTO getNewToken(RefreshTokenRequestDTO token){
+    public AuthenticationResponseDTO getNewToken(RefreshTokenRequestDTO token) {
         return refreshTokenService.findByToken(token.getToken())
                 .map(refreshTokenService::verifyExpiration)
                 .map(RefreshToken::getUser)
@@ -73,7 +73,7 @@ public class AuthenticationService {
                     String jwtToken = jwtService.generateToken(user);
                     Date date = jwtService.tokenExpiration(jwtToken);
                     return AuthenticationResponseDTO.builder()
-                            .token(new TokenDTO(jwtToken,token.getToken(), date))
+                            .token(new TokenDTO(jwtToken, token.getToken(), date))
                             .user(new UserAuthenticationResponseDTO(user.getId(), user.getName(), user.getEmail()))
                             .build();
                 }).orElseThrow(() -> new RuntimeException("Refresh token is Invalid"));

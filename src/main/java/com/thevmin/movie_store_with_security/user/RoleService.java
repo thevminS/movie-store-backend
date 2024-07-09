@@ -10,15 +10,15 @@ import java.util.Optional;
 public class RoleService {
     private final RoleRepository roleRepository;
 
-    public void saveRole(Role role){
+    public void saveRole(Role role) {
         roleRepository.save(role);
     }
 
-    public Optional<Role> getUser(){
+    public Optional<Role> getUser() {
         return roleRepository.findByName("USER");
     }
 
-    public Optional<Role> getAdmin(){
+    public Optional<Role> getAdmin() {
         return roleRepository.findByName("ADMIN");
     }
 }

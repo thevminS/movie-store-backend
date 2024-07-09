@@ -31,5 +31,4 @@ public class Review {
     private Movie reviewedMovie;
 
 
-
 }
