@@ -21,7 +21,7 @@ public class MovieService {
         List<Movie> movies = movieRepository.findAll();
         return movies.stream()
                 .map(MovieMapper::mapMovieToMovieCardResponseDTO)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public Movie saveMovie(Movie movie) {

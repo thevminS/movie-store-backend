@@ -20,7 +20,7 @@ public class ReviewService {
     public ResponseEntity<String> createReview(CreateReviewRequestDTO createReviewRequestDTO) {
         User user = userRepository.findById(createReviewRequestDTO.getUserId()).orElseThrow();
         Movie movie = movieRepository.findById(createReviewRequestDTO.getMovieId()).orElseThrow();
-        Review review = reviewRepository.save(ReviewMapper.MapCreateReviewRequestDtoToReview(createReviewRequestDTO, user, movie));
+        reviewRepository.save(ReviewMapper.mapCreateReviewRequestDtoToReview(createReviewRequestDTO, user, movie));
         return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
 

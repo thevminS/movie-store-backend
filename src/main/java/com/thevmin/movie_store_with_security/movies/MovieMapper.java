@@ -5,6 +5,11 @@ import com.thevmin.movie_store_with_security.movies.dto.MovieResponseDTO;
 import com.thevmin.movie_store_with_security.reviews.ReviewMapper;
 
 public class MovieMapper {
+
+    private MovieMapper(){
+        throw new IllegalStateException("Utility class");
+    }
+
     public static MovieCardResponseDTO mapMovieToMovieCardResponseDTO(Movie movie) {
         return MovieCardResponseDTO.builder()
                 .id(movie.getId())
@@ -26,6 +31,6 @@ public class MovieMapper {
                 .rating(movie.getRating())
                 .releaseDate(movie.getReleaseDate())
                 .tailorLink(movie.getTailorLink())
-                .reviews(ReviewMapper.MapListOfReviewToListOfReviewDTO(movie.getMovieReviews())).build();
+                .reviews(ReviewMapper.mapListOfReviewToListOfReviewDTO(movie.getMovieReviews())).build();
     }
 }

@@ -1,6 +1,11 @@
 package com.thevmin.movie_store_with_security.configurations;
 
 public class Constants {
+
+    private Constants(){
+        throw new IllegalStateException("Utility class");
+    }
+
     public static final String AUTH_URL = "/api/v1/auth";
     public static final String MOVIE_URL = "/api/v1/movies";
     public static final String USER_URL = "/api/v1/users";

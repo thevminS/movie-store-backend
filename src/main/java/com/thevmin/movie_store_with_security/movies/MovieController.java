@@ -34,7 +34,7 @@ public class MovieController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    private void addMovie(@RequestBody Movie movie) {
+    void addMovie(@RequestBody Movie movie) {
         movieService.saveMovie(movie);
     }
 

@@ -41,6 +41,6 @@ public class Movie {
     private String tailorLink;
 
     @OneToMany(mappedBy = "reviewedMovie")
-    private List<Review> MovieReviews;
+    private List<Review> movieReviews;
 
 }

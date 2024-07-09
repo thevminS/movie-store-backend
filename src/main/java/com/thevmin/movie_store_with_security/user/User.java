@@ -30,9 +30,6 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String email;
 
-//    @Enumerated(EnumType.STRING)
-//    private Role role;
-
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 

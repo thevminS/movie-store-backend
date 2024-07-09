@@ -10,23 +10,27 @@ import java.util.List;
 
 public class ReviewMapper {
 
-    public static Review MapCreateReviewRequestDtoToReview(CreateReviewRequestDTO createReviewRequestDTO, User user, Movie movie) {
+    private ReviewMapper(){
+        throw new IllegalStateException("Utility class");
+    }
+
+    public static Review mapCreateReviewRequestDtoToReview(CreateReviewRequestDTO createReviewRequestDTO, User user, Movie movie) {
         return Review.builder()
-                .review(createReviewRequestDTO.getReview())
+                .reviewText(createReviewRequestDTO.getReview())
                 .reviewedMovie(movie)
                 .reviewOwner(user)
                 .build();
     }
 
-    public static List<ReviewDTO> MapListOfReviewToListOfReviewDTO(List<Review> reviews) {
-        return reviews.stream().map(ReviewMapper::MapReviewToReviewDTO).toList();
+    public static List<ReviewDTO> mapListOfReviewToListOfReviewDTO(List<Review> reviews) {
+        return reviews.stream().map(ReviewMapper::mapReviewToReviewDTO).toList();
 
     }
 
-    public static ReviewDTO MapReviewToReviewDTO(Review review) {
+    public static ReviewDTO mapReviewToReviewDTO(Review review) {
         return ReviewDTO.builder()
                 .id(review.getId())
-                .review(review.getReview())
-                .owner(UserMapper.MapUserToUserProfileDTO(review.getReviewOwner())).build();
+                .review(review.getReviewText())
+                .owner(UserMapper.mapUserToUserProfileDTO(review.getReviewOwner())).build();
     }
 }

@@ -1,17 +1,16 @@
 package com.thevmin.movie_store_with_security.movies;
 
-import com.thevmin.movie_store_with_security.movies.dto.MovieCardResponseDTO;
 import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MovieMapperTest {
     Movie movie = new Movie();
 
-    @Before("")
-    void setUp(){
+    @BeforeEach
+    void setUp() {
         movie.setId((long) 5);
         movie.setName("Avengers");
         movie.setDescription("Avengers");
@@ -20,23 +19,27 @@ class MovieMapperTest {
     }
 
     @Test
-    void testWhetherIdEquals(){
+    void testWhetherIdEquals() {
         assertEquals(movie.getId(), MovieMapper.mapMovieToMovieCardResponseDTO(movie).getId());
     }
+
     @Test
-    void testWhetherNameEquals(){
+    void testWhetherNameEquals() {
         assertEquals(movie.getName(), MovieMapper.mapMovieToMovieCardResponseDTO(movie).getName());
     }
+
     @Test
-    void testWhetherDescriptionEquals(){
+    void testWhetherDescriptionEquals() {
         assertEquals(movie.getDescription(), MovieMapper.mapMovieToMovieCardResponseDTO(movie).getDescription());
     }
+
     @Test
-    void testWhetherLinkEquals(){
+    void testWhetherLinkEquals() {
         assertEquals(movie.getCoverImageLink(), MovieMapper.mapMovieToMovieCardResponseDTO(movie).getCoverImageLink());
     }
+
     @Test
-    void testWhetherRatingEquals(){
+    void testWhetherRatingEquals() {
         assertEquals(movie.getRating(), MovieMapper.mapMovieToMovieCardResponseDTO(movie).getRating());
     }
 

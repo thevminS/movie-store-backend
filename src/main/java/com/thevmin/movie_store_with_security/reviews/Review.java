@@ -19,8 +19,11 @@ public class Review {
     @GeneratedValue
     private Long id;
 
-    @Column(columnDefinition = "TEXT")
-    private String review;
+    @Column(
+            columnDefinition = "TEXT",
+            name = "review"
+    )
+    private String reviewText;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
