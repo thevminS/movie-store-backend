@@ -1,0 +1,15 @@
+server:
+  port: 3002
+spring:
+  application:
+    name: movie-store-with-security
+  datasource:
+    url: jdbc:mysql://localhost:3306/movie_store?createDatabaseIfNotExist=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    show-sql: true
