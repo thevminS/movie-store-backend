@@ -3,12 +3,16 @@ package com.thevmin.movie_store_with_security.auth;
 import com.thevmin.movie_store_with_security.user.User;
 import com.thevmin.movie_store_with_security.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.logging.Logger;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class RefreshTokenService {
@@ -24,6 +28,7 @@ public class RefreshTokenService {
             try {
                 return verifyExpiration(optionalRefreshToken.get());
             }catch (RuntimeException e){
+                log.info("Token is Expired. Creating new token");
             }
         }
         RefreshToken refreshToken = RefreshToken.builder()
