@@ -1,6 +1,5 @@
 package com.thevmin.movie_store_with_security.movies;
 
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
