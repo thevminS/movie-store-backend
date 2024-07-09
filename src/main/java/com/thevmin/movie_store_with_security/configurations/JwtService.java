@@ -7,7 +7,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -19,14 +19,19 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 
-@RequiredArgsConstructor
+
 @Service
 public class JwtService {
 
-    @Value("${environment.jwt.secret}")
-    private String SECRET_KEY ;
+    private final String secretKey;
 
     private final RevokedTokenRepository revokedTokenRepository;
+
+    @Autowired
+    public JwtService(@Value("${environment.jwt.secret}") String secretKey, RevokedTokenRepository revokedTokenRepository) {
+        this.secretKey = secretKey;
+        this.revokedTokenRepository = revokedTokenRepository;
+    }
 
     public String extractUserName(String token) {
         return extractClaims(token, Claims::getSubject);
@@ -81,7 +86,7 @@ public class JwtService {
     }
 
     private Key getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
+        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 }
