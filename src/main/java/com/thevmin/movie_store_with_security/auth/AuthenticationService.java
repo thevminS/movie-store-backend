@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -29,7 +30,10 @@ public class AuthenticationService {
 
     public AuthenticationResponseDTO register(RegisterRequestDTO request) {
         Set<Role> roles = new HashSet<>();
-        roles.add(roleService.getUser().get());
+        Optional<Role> roleOptional = roleService.getUser();
+        if (roleOptional.isPresent()){
+            roles.add(roleOptional.get());
+        }
         User user = User.builder()
                 .name(request.getName())
                 .email(request.getEmail())

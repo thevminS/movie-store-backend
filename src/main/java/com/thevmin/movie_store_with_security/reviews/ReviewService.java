@@ -21,7 +21,7 @@ public class ReviewService {
         User user = userRepository.findById(createReviewRequestDTO.getUserId()).orElseThrow();
         Movie movie = movieRepository.findById(createReviewRequestDTO.getMovieId()).orElseThrow();
         reviewRepository.save(ReviewMapper.mapCreateReviewRequestDtoToReview(createReviewRequestDTO, user, movie));
-        return new ResponseEntity<>(null, HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 
