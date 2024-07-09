@@ -24,7 +24,8 @@ import java.util.function.Function;
 public class JwtService {
 
     @Value("${environment.jwt.secret}")
-    private static String SECRET_KEY ;
+    private String SECRET_KEY ;
+
     private final RevokedTokenRepository revokedTokenRepository;
 
     public String extractUserName(String token) {
