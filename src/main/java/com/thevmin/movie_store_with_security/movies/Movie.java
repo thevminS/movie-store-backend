@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Data
@@ -14,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Movie {
+public class Movie implements Serializable {
 
     @Id
     @GeneratedValue
