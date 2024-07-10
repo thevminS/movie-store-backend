@@ -25,13 +25,11 @@ public class AuthenticationController {
         return ResponseEntity.ok(authenticationService.login(request));
     }
 
-    @CrossOrigin
     @PostMapping(Constants.REFRESH_URL_CONSTANT)
     public ResponseEntity<AuthenticationResponseDTO> getNewAccessToken(@RequestBody RefreshTokenRequestDTO token) {
         return ResponseEntity.ok(authenticationService.getNewToken(token));
     }
 
-    @CrossOrigin
     @PostMapping(Constants.LOGOUT_URL_CONSTANT)
     @ResponseStatus(HttpStatus.OK)
     public void logout(@RequestBody LogoutRequestDTO logoutRequestDTO) {

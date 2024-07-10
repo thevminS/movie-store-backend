@@ -18,13 +18,13 @@ public class MovieController {
 
     private final MovieService movieService;
 
-    @CrossOrigin
+
     @GetMapping
     ResponseEntity<List<MovieCardResponseDTO>> getAll() {
         return new ResponseEntity<>(movieService.findAllMovies(), HttpStatus.FOUND);
     }
 
-    @CrossOrigin
+
     @GetMapping("/{id}")
     ResponseEntity<MovieResponseDTO> getMovieById(@PathVariable Long id) {
         return movieService.getMovieById(id);
